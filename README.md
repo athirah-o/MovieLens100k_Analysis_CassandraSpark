@@ -19,7 +19,7 @@ Query Language (SQL) in order to answer the following questions [display only th
 cqlsh:movielens> CREATE TABLE ratings(user_id int, movie_id int, rating int, time int, PRIMARY KEY (user_id, movie_id);
 ```
 >[!NOTE] 
->The biggest challenge I faced during my assignment was when I stored DataFrame data into a Cassandra Keyspace and tried to read it back. Instead of the expected 10,000 rows from the original u.data file, Cassandra only returned 994 rows. This discrepancy occurred because initially, I set user_id as the only PRIMARY KEY in Cassandra. However, user_id values are not unique and appear multiple times in the u.data file.<br>
+>The biggest challenge I faced during my assignment was when I stored ratings dataframe from u.data into a Cassandra Keyspace and tried to read it back. Instead of the expected 10,000 rows from the original u.data file, Cassandra only returned 994 rows. This discrepancy occurred because initially, I set user_id as the only PRIMARY KEY in Cassandra. However, user_id values are not unique and appear multiple times in the u.data file.<br>
 In Cassandra, the PRIMARY KEY uniquely identifies each row within a table partition. When multiple rows in the CSV file share the same user_id, Cassandra stores them as updates to the same row rather than as separate rows. To address this issue, I changed the PRIMARY KEY to include both user_id and movie_id. This composite primary key ensures that each rating entry is unique within the partition. This adjustment not only guarantees data integrity but also facilitates efficient querying of ratings by both user and movie.
 
 ```
