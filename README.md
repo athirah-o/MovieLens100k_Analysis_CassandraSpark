@@ -26,7 +26,7 @@ In Cassandra, the PRIMARY KEY uniquely identifies each row within a table partit
 cqlsh:movielens> CREATE TABLE names (movie_id int, title text, release_date text, vid_release_date text, URL text, unknown int, action int, adventure int, animation int, children int, comedy int, crime int, documentary int, drama int, fantasy int, film_noir int, horror int, musical int, mystery int, romance int, sci_fi int, thriller int, war int, western int, PRIMARY KEY(movie_id));
 cqlsh:movielens> CREATE TABLE users (user_id int, age int, gender text, occupation text, zip text, PRIMARY KEY (user_id));
 ```
-
+#### In putty session:
 #### 2. Set the Spark SQL running environment
 ```
 from pyspark.sql import SparkSession
